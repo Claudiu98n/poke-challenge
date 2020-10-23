@@ -9,7 +9,7 @@ import { setSearchField } from './redux/searchField/searchFieldActions';
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.onRequestPokemons();
+    this.props.requestPokemons();
   }
 
   render() {
@@ -24,7 +24,7 @@ class App extends React.Component {
       :   <div className="container-fluid">
             <div className="header container-fluid d-flex flex-column align-items-center">
               <h1> Poke-Challenge </h1>
-              <SearchBar searchMethod={this.props.onSearchChange} />
+              <SearchBar searchMethod={this.props.setSearchField} />
             </div>
             <CardList pokemons={filteredPokemons}/>
           </div>
@@ -43,8 +43,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onRequestPokemons: () => dispatch(requestPokemons()),
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    requestPokemons: () => dispatch(requestPokemons()),
+    setSearchField: (event) => dispatch(setSearchField(event.target.value)),
   }
 }
 
